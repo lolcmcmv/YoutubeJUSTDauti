@@ -4,43 +4,27 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Upload Video</title>
-    <link rel="stylesheet" href="styles.css"> <!-- Link to optional CSS -->
+    <link rel="stylesheet" href="styles.css"> <!-- Link to CSS -->
 </head>
 <body>
-    <h1>Upload Your Video</h1>
-    <form id="uploadForm">
-        <input type="file" id="videoFile" accept="video/*" required><br><br>
-        <button type="submit">Upload Video</button>
-    </form>
-    <div id="status"></div>
-    <button onclick="window.location.href='index.html'">Back to Videos</button>
+    <header>
+        <h1>Upload Your Video</h1>
+        <nav>
+            <button onclick="window.location.href='index.html'">Back to Videos</button>
+        </nav>
+    </header>
+    <main>
+        <form id="uploadForm">
+            <input type="file" id="videoFile" accept="video/*" required><br><br>
+            <button type="submit">Upload Video</button>
+            <div id="loading" class="hidden">Uploading...</div>
+        </form>
+        <div id="status"></div>
+    </main>
+    <footer>
+        <p>&copy; 2024 Video Upload Site</p>
+    </footer>
 
-    <script>
-        document.getElementById('uploadForm').addEventListener('submit', async function (e) {
-            e.preventDefault();
-            const file = document.getElementById('videoFile').files[0];
-            const formData = new FormData();
-            formData.append('file', file);
-
-            // Use the Altcha API for uploading the video
-            const response = await fetch('https://api.altcha.org/v1/upload/video', {
-                method: 'POST',
-                headers: {
-                    'Authorization': 'Bearer ckey_01552414f54b0690a6a1e56de5ab', // Your actual API key
-                },
-                body: formData
-            });
-
-            const result = await response.json();
-            if (result && result.url) {
-                document.getElementById('status').textContent = 'Upload successful!';
-                setTimeout(() => {
-                    window.location.href = 'index.html'; // Redirect to the main page after 2 seconds
-                }, 2000);
-            } else {
-                document.getElementById('status').textContent = 'Upload failed. Please try again.';
-            }
-        });
-    </script>
+    <script src="script.js"></script> <!-- Link to JavaScript -->
 </body>
 </html>
