@@ -12,12 +12,14 @@
     <button onclick="window.location.href='upload.html'">Upload New Video</button>
 
     <script>
-        // Function to load existing videos (if any)
+        // Function to load existing videos (dummy data for demonstration)
         async function loadVideos() {
-            // Fetch your uploaded videos from your server or Altcha API (as per your setup)
-            // Placeholder implementation since the Altcha API may not provide a listing endpoint
-            const response = await fetch('https://api.altcha.org/v1/video/list'); // Replace with your actual endpoint if available
-            const videos = await response.json();
+            // This should fetch videos from your backend or the Altcha API
+            // Using dummy data for testing
+            const videos = [
+                { url: 'https://www.learningcontainer.com/wp-content/uploads/2020/05/sample-mp4-file.mp4', filename: 'Sample Video 1' },
+                { url: 'https://www.learningcontainer.com/wp-content/uploads/2020/05/sample-mp4-file.mp4', filename: 'Sample Video 2' }
+            ];
 
             videos.forEach(video => {
                 const videoElem = document.createElement('div');
