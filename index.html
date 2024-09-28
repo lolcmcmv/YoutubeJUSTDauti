@@ -4,39 +4,22 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Video Upload Site</title>
-    <link rel="stylesheet" href="styles.css"> <!-- Link to optional CSS -->
+    <link rel="stylesheet" href="styles.css"> <!-- Link to CSS -->
 </head>
 <body>
-    <h1>Uploaded Videos</h1>
-    <div id="videoList"></div>
-    <button onclick="window.location.href='upload.html'">Upload New Video</button>
+    <header>
+        <h1>Uploaded Videos</h1>
+        <nav>
+            <button onclick="window.location.href='upload.html'">Upload New Video</button>
+        </nav>
+    </header>
+    <main>
+        <div id="videoList"></div>
+    </main>
+    <footer>
+        <p>&copy; 2024 Video Upload Site</p>
+    </footer>
 
-    <script>
-        // Function to load existing videos (dummy data for demonstration)
-        async function loadVideos() {
-            // This should fetch videos from your backend or the Altcha API
-            // Using dummy data for testing
-            const videos = [
-                { url: 'https://www.learningcontainer.com/wp-content/uploads/2020/05/sample-mp4-file.mp4', filename: 'Sample Video 1' },
-                { url: 'https://www.learningcontainer.com/wp-content/uploads/2020/05/sample-mp4-file.mp4', filename: 'Sample Video 2' }
-            ];
-
-            videos.forEach(video => {
-                const videoElem = document.createElement('div');
-                videoElem.classList.add('video-container');
-                videoElem.innerHTML = `
-                    <video controls>
-                        <source src="${video.url}" type="video/mp4">
-                        Your browser does not support the video tag.
-                    </video>
-                    <p>${video.filename}</p>
-                `;
-                document.getElementById('videoList').appendChild(videoElem);
-            });
-        }
-
-        // Load videos on page load
-        loadVideos();
-    </script>
+    <script src="script.js"></script> <!-- Link to JavaScript -->
 </body>
 </html>
